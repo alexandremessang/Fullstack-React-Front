@@ -1,30 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { Virtual } from 'swiper';
+// import Swiper JS
+import { Swiper, SwiperSlide } from 'swiper/react';
+// import Swiper styles
+import "swiper/swiper-bundle.min.css";
 
 
 function Homepage(props) {
 
-    const customStyle = {
-        height: '100%',
-        width: '100%',
-        minHeight: '500px',
-        minWidth: '300px'
-    }
+    // Create array with 1000 slides
+    const slides = Array.from({ length: 1000 }).map(
+        (el, index) => `Slide ${index + 1}`
+    );
     
     return (
         <div>
-            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={customStyle}>
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={[51.505, -0.09]}>
-                    <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
-                </Marker>
-            </MapContainer>
+            <Swiper modules={[Virtual]} spaceBetween={50} slidesPerView={3} virtual>
+                {slides.map((slideContent, index) => (
+                    <SwiperSlide key={slideContent} virtualIndex={index}>
+                    {slideContent}
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </div>
     )
 }
