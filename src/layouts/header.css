@@ -1,5 +1,47 @@
 .headerContainer {
-    height: 80px;
-    width: 100%;
-    background-color: white;
+    padding: 15px 50px;
+    background-color: #24252A;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 9999;
 }
+
+.headerContainer li, .headerContainer a, .headerContainer button {
+    color: #EDF0F1;
+}
+
+.headerContainer .logo {
+    margin-right: auto;
+    cursor: pointer;
+    color: #EDF0F1; /*temp*/
+
+}
+
+.headerContainer .navLinks {
+   list-style: none;
+}
+
+.headerContainer .navLinks li {
+    display: inline-block;
+    padding: 0 20px;
+
+}
+
+.headerContainer .navLinks li a {
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+.headerContainer .navLinks li a:hover {
+    color: #0088A9;
+}
+
+.headerContainer .login {
+    color: #EDF0F1; /*temp*/
+    margin-left: 20px;
+}
+

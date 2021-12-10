@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'MontSerrat', sans-serif;
 }
 
 .App-logo {
@@ -40,9 +43,13 @@
 .content {
   background-color: #fdfdfd;
   min-height: calc(100vh - 200px);
+  margin: 100px 45px;
 }
 
 .headerContainer {
+  margin-top: -100px;
+  margin-left: 0;
+  margin-right: 0;
   box-shadow: 0 -2px black;
 }
 
@@ -53,3 +60,4 @@ footer {
   height:120px;   /* Height of the footer */
   background:#EEEE;
 }
+
