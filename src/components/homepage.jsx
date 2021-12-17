@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Navigation } from 'swiper';
+import { Navigation, Scrollbar } from 'swiper';
 import './styles/homepage.style.css'
 // import Swiper JS
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -31,13 +31,10 @@ function Homepage(props) {
                 </div>
             </div>
             <Swiper 
-                modules={[Navigation]} 
+                modules={[Navigation, Scrollbar]} 
                 spaceBetween={20} 
                 slidesPerView={3} 
-                navigation={{
-                    nextEl: 'slideNext',
-                    prevEl: 'slidePrev',
-                  }}
+                navigation
                 allowTouchMove={true}
             >
                 {slides.map((slideContent, index) => (
