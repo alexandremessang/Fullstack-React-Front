@@ -1,6 +1,6 @@
 .vignetteContainer {
     height: 400px;
-    width: 300px;
+    max-width: 400px;
     box-shadow: #444 0px 0px 5px 2px;
     border-radius: 15px;
     margin-top: 20px;
@@ -9,11 +9,12 @@
   
 .vignetteTop {
 border-radius: 15px 15px 0 0;
+max-width: 400px;
 height: 50%;
 background-image: url("../../img/paris-city-content.jpeg");
 background-position: center;
 background-repeat: no-repeat;
-background-size: contain;
+background-size: cover;
 }
 
 .vignetteBottom {
