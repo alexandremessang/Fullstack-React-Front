@@ -46,7 +46,6 @@ function Homepage(props) {
             <Swiper 
                 className='swiper'
                 modules={[]} 
-                spaceBetween={30} 
                 slidesPerView={4} 
                 rewind={true}
                 onSlideChange={() => {
