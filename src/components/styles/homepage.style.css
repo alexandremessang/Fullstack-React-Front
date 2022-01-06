@@ -1,6 +1,10 @@
 .vignetteContainer {
     height: 400px;
     width: 300px;
+    box-shadow: #444 0px 0px 5px 2px;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   
 .vignetteTop {
@@ -37,17 +41,19 @@ font-size: 1.4rem;
 
 .homepageCategoryTitle h3 {
     text-align: left;
+    font-size: 1.6rem;
 }
 
 .sliderControls {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    gap: 5px;
 }
 
-.slidePrev, .slideNext {
+.prevSlide, .nextSlide {
     cursor: pointer;
-    border: #EEEE solid 2px;
+    border: #444 solid 2px;
     background-color: transparent;
     border-radius: 50px;
     height: 2rem;
@@ -57,6 +63,7 @@ font-size: 1.4rem;
     align-items: center;
 }
 
-.slidePrev span, .slideNext span {
-    color: #24252A;
+.prevSlide, .nextSlide {
+    color: #444;
+
 }
