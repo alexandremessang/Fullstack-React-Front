@@ -8,7 +8,7 @@ function Header(props) {
         <header>
             <div className="headerContainer" >
                 <div className="logo">
-                    logo
+                    ZeBnB
                 </div>
                 <nav className="navLinks">
                     <ul>

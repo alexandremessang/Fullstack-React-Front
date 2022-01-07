@@ -1,3 +1,136 @@
+.homepageFirstBG {
+    height: 120vh;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.card {
+    width: 100%;
+    border-radius: 15px;
+    height: 60vh;
+    position: relative;
+    z-index: 20;
+}
+
+.firstCard {
+    margin-top: 20vh;
+    background-image: url('../../img/bresil.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.firstCard .layer {
+    background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 49%, rgba(0,0,0,1) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.firstCard .firstCardTitle {
+    position: relative;
+    top: 35vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.firstCard button {
+    position: relative;
+    top: 40vh;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 25px;
+    background-color: white;
+}
+
+.firstCard button span {
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    min-height: 28px;
+    background: -webkit-linear-gradient(90deg, rgb(111, 1, 156) 0%, rgb(198, 1, 126) 135.12%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    justify-content: center;
+    align-items: center;
+}
+
+.secondCard {
+    margin-top: 10vh;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: #EEE;
+}
+
+@media screen and (max-width: 992px) {
+    .secondCardRight {
+        display: none;
+    }
+}
+
+.secondCardLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #333;
+}
+
+.secondCardLeftSmallTitle {
+    font-size: 1.1rem;
+    font-weight: 800;
+    width: 100%;
+}
+
+.secondCardLeftBigTitle {
+    margin-top: 10px;
+    font-size: 64px;
+    line-height: 74px;
+    font-weight: 800;
+    width: 100%;
+}
+
+.secondCardLeftButton {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.secondCardLeftButton button {
+    border-radius: 5px;
+    padding: 10px 15px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    border: none;
+}
+
+.secondCardRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../img/carte-cadeau.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin: 3vw;
+    width: 100%;
+    border-radius: 15px;
+}
+
+
 .vignetteContainer {
     height: 25vw;
     max-width: 400px;
@@ -5,37 +138,44 @@
     border-radius: 15px;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.vignetteContainer:hover {
+    transform: scale(1.05) rotateY(20deg) rotateX(-2deg);
+}
   
 .vignetteTop {
-border-radius: 15px 15px 0 0;
-max-width: 400px;
-height: 50%;
-background-image: url("../../img/paris-city-content.jpeg");
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
+    border-radius: 15px 15px 0 0;
+    max-width: 400px;
+    height: 50%;
+    background-image: url("../../img/paris-city-content.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .vignetteBottom {
-border-radius: 0 0 15px 15px;
-height: 50%;
-color: white;
-background-color: red;
-padding: 0px 15px;
+    border-radius: 0 0 15px 15px;
+    height: 50%;
+    color: white;
+    background-color: red;
+    padding: 0px 15px;
 }
 
 .vignetteText {
-text-align: left;
-padding-top: 15px;
-font-size: 1.4rem;
+    text-align: left;
+    padding-top: 15px;
+    font-size: 1.4rem;
 }
 
 .homepageCategoryContainer {
     display: flex;
     justify-content: flex-end;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 20vh;
 }
 
 .homepageCategoryTitle {
@@ -50,6 +190,7 @@ font-size: 1.4rem;
 .swiper {
     padding-right: 5px;
     padding-left: 30px;
+    margin: auto !important;
 }
 
 .sliderControls {
@@ -61,8 +202,9 @@ font-size: 1.4rem;
 
 .prevSlide, .nextSlide {
     cursor: pointer;
-    border: #444 solid 2px;
+    border: #EEEE solid 2px;
     background-color: transparent;
+    color: #444;
     border-radius: 50px;
     height: 2rem;
     width: 2rem;
@@ -71,7 +213,6 @@ font-size: 1.4rem;
     align-items: center;
 }
 
-.prevSlide, .nextSlide {
-    color: #444;
-
+.prevSlide:hover, .nextSlide:hover {
+    transform: scale(1.04);
 }

@@ -29,35 +29,68 @@ function Homepage(props) {
     
     return (
         <div>
-            <div className="homepageCategoryContainer">
-                <div className="homepageCategoryTitle">
-                    <h3>Des idées pour votre prochain voyage</h3>
-                </div>
-                <div className="sliderControls">
-                    <div className="prevSlide" onClick={goPrev}>
-                        <i class="fas fa-angle-left"></i>
+            <div className="homepageFirstBG"></div>
+            <div className="container">
+                <div className="card firstCard">
+                    <div className="layer"></div>
+                    <div className="firstCardTitle">
+                        Vous ne savez pas où partir ?
+                        <br />
+                        Parfait.
                     </div>
-                    <div className="nextSlide" onClick={goNext}>
-                        <i class="fas fa-angle-right"></i>
-                        
+                    <button><span>Je suis flexible</span></button>
+                </div>
+                <div className="card secondCard">
+                    <div className="layer"></div>
+                    <div className="secondCardLeft">
+                        <div className="secondCardLeftSmallTitle">
+                            Découvrez les
+                        </div>
+                        <div className="secondCardLeftBigTitle">
+                            Cartes cadeaux ZeBnB
+                        </div>
+                        <div className="secondCardLeftButton">
+                            <button>Acheter maintenant</button>
+                            
+                        </div>
+                    </div>
+                    <div className="secondCardRight">
+
                     </div>
                 </div>
             </div>
-            <Swiper 
-                className='swiper'
-                modules={[]} 
-                slidesPerView={4} 
-                rewind={true}
-                onSlideChange={() => {
-                    console.log('change');
-                }}
-            >
-                {slides.map((slideContent, index) => (
-                    <SwiperSlide key={index}>
-                        {slideContent}
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+            <div className="container">
+                <div className="homepageCategoryContainer">
+                    <div className="homepageCategoryTitle">
+                        <h3>Des idées pour votre prochain voyage</h3>
+                    </div>
+                    <div className="sliderControls">
+                        <div className="prevSlide" onClick={goPrev}>
+                            <i class="fas fa-angle-left"></i>
+                        </div>
+                        <div className="nextSlide" onClick={goNext}>
+                            <i class="fas fa-angle-right"></i>
+                            
+                        </div>
+                    </div>
+                </div>
+                <Swiper 
+                    className='swiper'
+                    modules={[]} 
+                    slidesPerView={4} 
+                    rewind={true}
+                    onSlideChange={() => {
+                        console.log('change');
+                    }}
+                >
+                    {slides.map((slideContent, index) => (
+                        <SwiperSlide key={index}>
+                            {slideContent}
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
+            
         </div>
     )
 }
