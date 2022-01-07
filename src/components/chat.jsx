@@ -1,13 +1,13 @@
-import React, { useState, useEffect} from "react";
-import ActionCable from "actioncable";
+import React, { useState, useEffect } from "react";
+import ActionCable from 'actioncable';
+import ActionCableProvider from "react-actioncable-provider";
+
 
 function Chat(props) {
-
-
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState([]);
 
   const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
-  
+
   const fetchMessages = () => {
     fetch("http://localhost:3000/messages")
       .then((res) => res.json())
@@ -20,16 +20,15 @@ function Chat(props) {
       { received: (message) => handleReceivedMessage(message) }
     );
   };
-  
-    useEffect(() => {
-        fetchMessages()
-        createSubscription()
-    }, [])
+
+  useEffect(() => {
+    fetchMessages();
+    createSubscription();
+    // handleReceivedMessage();
+  }, []);
 
   const mapMessages = () => {
-    return messages.map((message, i) => (
-      <li key={i}>{message.content}</li>
-    ));
+    return messages.map((message, i) => <li key={i}>{message.content}</li>);
   };
 
   const handleReceivedMessage = (message) => {
@@ -52,17 +51,15 @@ function Chat(props) {
     };
     fetch("http://localhost:3000/messages", fetchObj);
     e.target.reset();
+    setMessages([...messages, messageObj.message]);
   };
 
   return (
     <div className="Chat">
-      <ActionCable
-        channel={{ channel: "MessagesChannel" }}
-        onReceived={handleReceivedMessage}
-      />
+      <ActionCableProvider cable={cable}></ActionCableProvider>
       <h2>Messages</h2>
       <ul>{mapMessages()}</ul>
-      <form>
+      <form onSubmit={ (e) => {handleMessageSubmit(e)}}>
         <input name="message" type="text" />
         <input type="submit" value="Send message" />
       </form>
