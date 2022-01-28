@@ -1,0 +1,118 @@
+.locationContainer {
+    margin-top: 2rem;
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 3%;
+}
+
+.locationCard {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.locationCard a, .locationCard a:hover, .locationCard a:visited {
+    position: relative;
+    display: block;
+    z-index: 1;
+    text-decoration: none;
+    color: unset;
+}
+
+.locationCardImg {
+    border-radius: 15px;
+    position: relative;
+}
+
+.locationCardImg img {
+    height: 300px;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.locationCardFav {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    z-index: 50;
+    color: white;
+    background-color: rgba(0,0,0, 0.4);
+    border-radius: 50px;
+    padding: 2px 4px;
+    cursor: pointer;
+}
+
+.locationCardFav:hover {
+    transform: scale(1.1);
+}
+
+.locationCardInfo {
+    margin-top: -15px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.locationCardInfoRow {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.locationCardInfoRow > * {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+.locationCardInfoRow h4, .locationCardInfoRow h5 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    width: 100%;
+} 
+
+.locationCardInfo .greyText {
+    color: #777;
+}
+
+.locationCardInfo .lightBlack {
+    color: #222222;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.locationCard .swiper {
+    position: relative;
+}
+
+.locationCard .sliderControls .nextSlide {
+    position: absolute;
+    right: 5px;
+    top: 40%;
+    z-index: 40;
+    border: none;
+    display: none;
+}
+
+.locationCard .sliderControls .prevSlide {
+    position: absolute;
+    left: 5px;
+    top: 40%;
+    z-index: 40;
+    border: none;
+    display: none;
+}
+
+.locationCard:hover .sliderControls .prevSlide, .locationCard:hover .sliderControls .nextSlide {
+    display: block;
+}
+
+.locationCard .sliderControls .prevSlide i, .locationCard .sliderControls .nextSlide i  {
+    color: #EEE;
+    font-size: 1.5rem; 
+}
+
+

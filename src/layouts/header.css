@@ -18,7 +18,10 @@
     margin-right: auto;
     cursor: pointer;
     color: #EDF0F1; /*temp*/
+}
 
+.headerContainer .logo a, .headerContainer .logo a:hover, .headerContainer .logo a:visited {
+    text-decoration: none;
 }
 
 .headerContainer .navLinks {
@@ -91,6 +94,19 @@
     color: #24252A;
     font-size: 0.8rem;
     padding: 10px;
+}
+
+.headerContainer .logMenu li:hover {
+    cursor: pointer;
+    background-color: rgba(113, 113, 113, 0.1);
+    width: 250px;
+    margin-left: -7px;
+    padding-left: 17px;
+}
+
+.headerContainer .logMenu li a, .headerContainer .logMenu li a:visited, .headerContainer .logMenu li a:hover {
+    text-decoration: none;
+    color: #24252A;
 }
 
 .headerContainer .logMenu .greySeparator {

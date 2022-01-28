@@ -38,7 +38,7 @@ function Homepage(props) {
                         <br />
                         Parfait.
                     </div>
-                    <button><span>Je suis flexible</span></button>
+                    <button><span><Link to="/explore">Je suis flexible</Link></span></button>
                 </div>
                 <div className="card secondCard">
                     <div className="layer"></div>
@@ -66,10 +66,10 @@ function Homepage(props) {
                     </div>
                     <div className="sliderControls">
                         <div className="prevSlide" onClick={goPrev}>
-                            <i class="fas fa-angle-left"></i>
+                            <i className="fas fa-angle-left"></i>
                         </div>
                         <div className="nextSlide" onClick={goNext}>
-                            <i class="fas fa-angle-right"></i>
+                            <i className="fas fa-angle-right"></i>
                             
                         </div>
                     </div>
