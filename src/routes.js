@@ -1,5 +1,5 @@
 import { default as React } from 'react';
-import { Route, Routes, Router, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Homepage from './components/homepage';
 import Chat from './components/chat';
 
@@ -8,7 +8,7 @@ import Signin from './components/auth/Signin'
 import Explore from './components/Explore';
 
 const RouterNav = () => {
-    const navigate = useNavigate();
+
     return (
         <Routes>
             <Route exact path="/" element={<Homepage/>}/>

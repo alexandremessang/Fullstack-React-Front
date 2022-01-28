@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import './header.css';
 
 function Header(props) {
-    const [isLogged, setIsLogged] = useState(true); // si le User est connecté
 
     const showMenu = (e) => {
         if (!props.isLogMenuOpen) {
@@ -19,7 +18,8 @@ function Header(props) {
 
     const handleDisconnect = () => {
         //todo api disconect
-        setIsLogged(false);
+        localStorage.removeItem('token');
+        props.setIsLogged(false);
     }
 
     function expand() {
@@ -51,7 +51,7 @@ function Header(props) {
                     </div>
                     <div className="logMenu" id='logMenu'>
                         {
-                            (props.isLogMenuOpen) ? <LogMenu isLogged={isLogged} handleDisconnect={handleDisconnect}></LogMenu> : ''
+                            (props.isLogMenuOpen) ? <LogMenu isLogged={props.isLogged} handleDisconnect={handleDisconnect}></LogMenu> : ''
                         }
                     </div>
                 </div>
@@ -86,7 +86,7 @@ function LogMenu(props) {
     } else {
         logPart.push(
             <ul>
-                <li className="menuLink" >Inscription</li>
+                <li className="menuLink" ><Link to="/signin">Inscription</Link></li>
                 <li className="menuLink"><Link to="/login" onClick={props.select}>Connexion</Link></li>
                 <div className="greySeparator"></div>
             </ul>

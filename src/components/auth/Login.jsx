@@ -1,18 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/auth.style.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 ;
 
 
 function Login(props) {
-
+    let navigate = useNavigate();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [isToken, setIsToken] = useState(localStorage.getItem('token'));
+
+    useEffect(() => {
+        if (isToken) navigate("/")
+    }, []);
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        //todo
+        const fetchObj = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(),
+          };
+          fetch("http://localhost:3000/api/v1/users", fetchObj)
+            .then((res) => {
+                return res.json()
+            })
+            .then((res) => {
+                console.log(res);
+                if (res.token !== undefined) {
+                    localStorage.setItem('token', res.token);
+                    setIsToken(true)
+                }
+            });
+          e.target.reset();
     }
 
     return (

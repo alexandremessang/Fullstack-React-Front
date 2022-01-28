@@ -1,16 +1,53 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
+import { Navigation } from 'swiper';
 
 function Signin(props) {
+    let navigate = useNavigate();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
+    const [isToken, setIsToken] = useState();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        //todo
+        if ( !email || !password || !confirmPassword ) return;
+
+        const newUser = {
+            user: {
+                email: email,
+                password: password,
+                password_confirmation: confirmPassword
+            }
+        }
+
+        const fetchObj = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newUser),
+          };
+          fetch("http://localhost:3000/api/v1/users", fetchObj)
+            .then((res) => {
+                return res.json()
+            })
+            .then((res) => {
+                console.log(res);
+                if (res.token !== undefined) {
+                    localStorage.setItem('token', res.token);
+                    setIsToken(true)
+                }
+            });
+          e.target.reset();
     }
+
+    useEffect(() => {
+      if (isToken) navigate("/")
+
+    }, [isToken]);
+    
 
 
     return (
