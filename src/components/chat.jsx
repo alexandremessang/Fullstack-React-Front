@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ActionCable from 'actioncable';
 import ActionCableProvider from "react-actioncable-provider";
-
+import './styles/chat.style.css'
 
 function Chat(props) {
   const [messages, setMessages] = useState([]);
