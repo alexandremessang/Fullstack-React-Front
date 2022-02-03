@@ -23,12 +23,19 @@ function Homepage(props) {
 
     
     // Create array with 1000 slides
-    const slides = Array.from({ length: 6 }).map(
-        (el, index) => <Vignette ></Vignette>
-    );
+    const slides = [
+        <Vignette url={"./paris-city-content.jpeg"} ville={"Paris"}></Vignette>,
+        <Vignette url={"./toulouse.jpeg"} ville={"Toulouse"}></Vignette>,
+        <Vignette url={"./nice.jpeg"} ville={"Nice"}></Vignette>,
+        <Vignette url={"./strasbourg.jpeg"} ville={"Strasbourg"}></Vignette>,
+        <Vignette url={"./lille.jpeg"} ville={"Lille"}></Vignette>,
+        <Vignette url={"./brest.jpeg"} ville={"Brest"}></Vignette>,
+    ]
+    
     
     return (
         <div>
+            <SearchBar />
             <div className="homepageFirstBG"></div>
             <div className="container">
                 <div className="card firstCard">
@@ -38,7 +45,7 @@ function Homepage(props) {
                         <br />
                         Parfait.
                     </div>
-                    <button><span><Link to="/explore">Je suis flexible</Link></span></button>
+                    <Link to="/explore"><button><span>Je suis flexible</span></button></Link>
                 </div>
                 <div className="card secondCard">
                     <div className="layer"></div>
@@ -104,16 +111,58 @@ function Vignette(props) {
             <div className="vignetteContainer">
                 
                 <div className="vignetteTop">
-                   
+                   <img src={props.url} alt="" />
                 </div>
                 <div className="vignetteBottom">
                     <div className="vignetteText">
-                        Paris
+                        {props.ville}
                     </div>
                     
                 </div>
             </div>
         </>
+    )
+}
+
+function SearchBar(props) {
+
+     const handleSearchSubmit = (e) => {
+        e.preventDefault();
+     }
+
+
+    return (
+        <form onSubmit={(e) => handleSearchSubmit(e)}>
+            <div className="searchContainer">
+                <div className="searchComponent">
+                    <div className="searchTitle firstSeachTitle">Destination</div>
+                    <div className="searchSubTitle">Où allez-vous ?</div>
+                </div>
+                <div className="searchSeparator"></div>
+                <div className="searchComponent">
+                    <div className="searchTitle">Arrivée</div>
+                    <div className="searchSubTitle">Quand ?</div>
+                </div>
+                <div className="searchSeparator"></div>
+                <div className="searchComponent">
+                    <div className="searchTitle">Départ</div>
+                    <div className="searchSubTitle">Quand ?</div>
+                </div>
+                <div className="searchSeparator"></div>
+                <div className="searchComponent">
+                    <div className="searchTitle">Voyageur</div>
+                    <div className="searchSubTitle">Qui ?</div>
+                </div>
+                <div>
+                    <button className="searchButton">
+                        <div className="searchIcon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </button>
+                </div>
+                
+            </div>
+        </form>
     )
 }
 

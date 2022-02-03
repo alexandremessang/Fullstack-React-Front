@@ -80,6 +80,10 @@ footer {
   flex-wrap: wrap;
 }
 
+.no-wrap {
+  flex-wrap: nowrap !important;
+}
+
 .text-left {
   text-align: left;
 }
@@ -90,4 +94,8 @@ footer {
 
 .text-right {
   text-align: right;
+}
+
+.w-100 {
+  width: 100%;
 }

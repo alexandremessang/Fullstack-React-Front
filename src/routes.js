@@ -7,14 +7,14 @@ import Login from './components/auth/Login';
 import Signin from './components/auth/Signin'
 import Explore from './components/Explore';
 
-const RouterNav = () => {
+const RouterNav = (props) => {
 
     return (
         <Routes>
             <Route exact path="/" element={<Homepage/>}/>
             <Route exact path="/chat" element={<Chat/>}/>
-            <Route exact path="/login" element={<Login/>}/>
-            <Route exact path="/signin" element={<Signin/>}/>
+            <Route exact path="/login" element={<Login setIsLogged={props.setIsLogged} isLogged={props.isLogged}/>}/>
+            <Route exact path="/signin" element={<Signin setIsLogged={props.setIsLogged} isLogged={props.isLogged}/>}/>
             <Route exact path="/explore" element={<Explore/>}/>
         </Routes>
     )

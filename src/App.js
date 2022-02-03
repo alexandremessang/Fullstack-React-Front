@@ -32,7 +32,7 @@ function App() {
       <Router>
         <Header setDropDown={setDropdown} isLogMenuOpen={isLogMenuOpen} setIsLogMenuOpen={setIsLogMenuOpen} setIsLogged={setIsLogged} isLogged={isLogged}/>
           <div className="content" onClick={handleLog}>
-            <RouterNav />
+            <RouterNav setIsLogged={setIsLogged} isLogged={isLogged}/>
           </div>
         <Footer />
       </Router>

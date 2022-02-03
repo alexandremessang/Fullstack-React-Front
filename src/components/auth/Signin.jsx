@@ -15,11 +15,10 @@ function Signin(props) {
         if ( !email || !password || !confirmPassword ) return;
 
         const newUser = {
-            user: {
-                email: email,
-                password: password,
-                password_confirmation: confirmPassword
-            }
+            email: email,
+            password: password,
+            password_confirmation: confirmPassword,
+            confirm_success_url: '/'
         }
 
         const fetchObj = {
@@ -29,26 +28,18 @@ function Signin(props) {
             },
             body: JSON.stringify(newUser),
           };
-          fetch("http://localhost:3000/api/v1/users", fetchObj)
+          fetch("http://localhost:3000/api/v1/auth", fetchObj)
             .then((res) => {
                 return res.json()
             })
             .then((res) => {
-                console.log(res);
-                if (res.token !== undefined) {
-                    localStorage.setItem('token', res.token);
-                    setIsToken(true)
+                if (res !== undefined && res !== null && res !== '') {
+                    props.setIsLogged(true)
+                    navigate("/login")
                 }
             });
           e.target.reset();
     }
-
-    useEffect(() => {
-      if (isToken) navigate("/")
-
-    }, [isToken]);
-    
-
 
     return (
         <div className="authPage">

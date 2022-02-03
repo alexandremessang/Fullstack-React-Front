@@ -11,29 +11,37 @@ function Login(props) {
     const [isToken, setIsToken] = useState(localStorage.getItem('token'));
 
     useEffect(() => {
-        if (isToken) navigate("/")
-    }, []);
+        if (isToken) {
+            props.setIsLogged(true)
+        }
+    }, [isToken]);
     
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const obj = {
+            email: email,
+            password: password
+        }
 
         const fetchObj = {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(),
+            body: JSON.stringify(obj),
           };
-          fetch("http://localhost:3000/api/v1/users", fetchObj)
+          fetch("http://localhost:3000/api/v1/auth/sign_in", fetchObj)
             .then((res) => {
-                return res.json()
+                return res.headers.get('access-token')
             })
             .then((res) => {
                 console.log(res);
-                if (res.token !== undefined) {
+                if (res !== undefined && res !== null && res !== '') {
                     localStorage.setItem('token', res.token);
                     setIsToken(true)
+                    navigate("/")
                 }
             });
           e.target.reset();

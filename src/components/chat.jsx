@@ -27,9 +27,6 @@ function Chat(props) {
     // handleReceivedMessage();
   }, []);
 
-  const mapMessages = () => {
-    return messages.map((message, i) => <li key={i}>{message.content}</li>);
-  };
 
   const handleReceivedMessage = (message) => {
     setMessages([...messages, message]);
@@ -55,13 +52,32 @@ function Chat(props) {
   };
 
   return (
-    <div className="Chat">
+    <div className="chat">
       <ActionCableProvider cable={cable}></ActionCableProvider>
       <h2>Messages</h2>
-      <ul>{mapMessages()}</ul>
-      <form onSubmit={ (e) => {handleMessageSubmit(e)}}>
-        <input name="message" type="text" />
-        <input type="submit" value="Send message" />
+      <div className="messageContainer">
+        <ul>
+          { 
+            messages.map((message, i) => (
+            <li key={i}>
+              <div className="row-flex no-wrap">
+                <div className="userLogo">
+                  <i class="fas fa-user-circle"></i>
+                </div>
+                <div className="message">
+                  {message.content}
+                </div>
+              </div>
+            </li>
+            ))
+          }
+        </ul>
+      </div>
+      <form onSubmit={(e) => handleMessageSubmit(e)} className="w-100">
+        <div className="row-flex w-100">
+          <textarea name="message" placeholder="..." type="text"></textarea>
+          <button type="submit">envoyer</button>
+        </div>
       </form>
     </div>
   );
