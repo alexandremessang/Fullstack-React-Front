@@ -7,6 +7,7 @@ import Login from './components/auth/Login';
 import Signin from './components/auth/Signin'
 import Explore from './components/Explore';
 import BecomeHost from './components/user/BecomeHost';
+import LocationDetail from './components/LocationDetail';
 
 const RouterNav = (props) => {
 
@@ -19,6 +20,7 @@ const RouterNav = (props) => {
             <Route exact path="/login" element={<Login setIsLogged={props.setIsLogged} isLogged={props.isLogged}/>}/>
             <Route exact path="/signin" element={<Signin setIsLogged={props.setIsLogged} isLogged={props.isLogged}/>}/>
             <Route exact path="/explore" element={<Explore/>}/>
+            <Route exact path="/locations/:id" element={<LocationDetail/>}/>
 
             {/* Routes requiring auth */}
             <Route exact path="/become-a-host" element={(props.isLogged) ?

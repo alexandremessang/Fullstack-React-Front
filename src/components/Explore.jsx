@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './styles/explore.style.css';
 import { Link } from "react-router-dom";
 
@@ -16,9 +16,29 @@ import "swiper/swiper.min.css"
 
 function Explore(props) {
 
-    const cards = Array.from({ length: 6 }).map(
-        (el, index) => <LocationCard key={index} id={index} />
-    );
+    const [locations, setLocations] = useState([]);
+    const [cards, setCards] = useState();
+
+    const fetchLocations = () => {
+        fetch("http://localhost:3000/api/v1/locations")
+          .then((res) => {return res.json()})
+          .then((res) => setLocations(res));
+      };
+
+    useEffect(() => {
+      fetchLocations();
+    }, []);
+    
+
+    useEffect(() => {
+        if (locations.length > 0) {
+            console.log(locations);
+            setCards(locations.map(
+                (location, index) => <LocationCard key={index} id={index} location={location} />
+            ));
+        }
+    }, [locations]);
+    
 
 
     return (
@@ -27,17 +47,34 @@ function Explore(props) {
 
             </div>
             <div className="locationContainer">
-                {cards}
+                {(cards && cards?.length > 0) ? cards : "Oops, une erreur est survenue !"}
             </div>
         </div>
     )
 }
 
 function LocationCard(props) {
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
 
-    const slides = Array.from({ length: 10 }).map(
-        (el, index) => <img src="/bresil.jpeg" alt="" />
-    );
+    const distance = getRandomInt(300);
+    const debut = getRandomInt(5)
+    const fin = getRandomInt(30);
+    const slides = [];
+
+    const photos = JSON.parse(props.location.photos);
+
+    if (photos) {
+        const tslides = new Map(Object.entries(photos));
+        tslides.forEach(photo => {
+             slides.push(<img src={photo} alt="hey" />)
+        });
+    } else {
+        console.log("pas de photos");
+    }
+
+
 
     const goNext = () => {
         const swiper = document.querySelector('.swiper-' + props.id).swiper;
@@ -64,7 +101,7 @@ function LocationCard(props) {
                 >
                     {slides.map((slideContent, index) => (
                         <SwiperSlide key={index}>
-                            <Link to="/hosts/id">
+                            <Link to={"/locations/"+props.location.id}>
                                 {slideContent}
                             </Link>
                         </SwiperSlide>  
@@ -80,22 +117,22 @@ function LocationCard(props) {
                 </Swiper>
                 
             </div>
-            <Link to="/hosts/id">
+            <Link to={"/locations/"+props.location.id}>
                 <div className="locationCardInfo">
                     <div className="locationCardInfoRow">
                         <div>
-                            <h4 className="text-left">Lieu de l'emplacement</h4>
+                            <h4 className="text-left">{props.location.street} {props.location.city}</h4>
                         </div>
                         <div>
-                            <h5 className="text-right lightBlack">200€ / nuit</h5>
+                            <h5 className="text-right lightBlack">{props.location.price}€ / nuit</h5>
                         </div>
                     </div>
                     <div className="locationCardInfoRow">
                         <div>
-                            <h5 className="text-left greyText">À 200 kilomètres</h5>
+                            <h5 className="text-left greyText">À {distance} kilomètres</h5>
                         </div>
                         <div>
-                            <h5 className="text-right greyText">5-23 mars</h5>
+                            <h5 className="text-right greyText">{debut}-{fin} mars</h5>
                         </div>
                     </div>
                 </div>
