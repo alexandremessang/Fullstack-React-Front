@@ -41,7 +41,7 @@ function Header(props) {
                 </div>
                 <nav className="navLinks">
                     <ul>
-                        <li><Link to="#">Devenez hôte</Link></li>
+                        <li><Link to="/become-a-host">Devenez hôte</Link></li>
                     </ul>
                 </nav>
                 <div className="logContainer" onClick={(e) => showMenu(e)} onBlur={close}>

@@ -17,6 +17,7 @@
 .headerContainer .logo {
     margin-right: auto;
     cursor: pointer;
+    font-weight: 600;
     color: #EDF0F1; /*temp*/
 }
 
