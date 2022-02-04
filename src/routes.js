@@ -11,8 +11,6 @@ import LocationDetail from './components/LocationDetail';
 
 const RouterNav = (props) => {
 
-
-
     return (
         <Routes>
             <Route exact path="/" element={<Homepage/>}/>

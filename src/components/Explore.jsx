@@ -101,7 +101,7 @@ function LocationCard(props) {
                 >
                     {slides.map((slideContent, index) => (
                         <SwiperSlide key={index}>
-                            <Link to={"/locations/"+props.location.id}>
+                            <Link to={"/locations/"+props.location.id} idLocation={props.location.id } >
                                 {slideContent}
                             </Link>
                         </SwiperSlide>  
@@ -117,7 +117,7 @@ function LocationCard(props) {
                 </Swiper>
                 
             </div>
-            <Link to={"/locations/"+props.location.id}>
+            <Link to={"/locations/"+props.location.id} idLocation={props.location.id } >
                 <div className="locationCardInfo">
                     <div className="locationCardInfoRow">
                         <div>
